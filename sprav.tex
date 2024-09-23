@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, total={7in,10in}]{geometry}
+\usepackage{polyglossia}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{graphicx}
+\let\ORIincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{\ORIincludegraphics[scale=0.65,#1]{#2}}
+\usepackage{changepage}
+\usepackage{hyperref}
+\usepackage{cancel}
+\graphicspath{{./images/}}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\newfontfamily\russianfont[Script=Cyrillic]{Times New Roman}
+\newfontfamily\englishfont{Times New Roman}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{6pt}
+
+\def\posl#1#2{\{#1_{#2}\}}
+\DeclareMathOperator*{\sh-like}{\sinh-like}
+\DeclareMathOperator*{\ch-like}{\cosh-like}
+\DeclareMathOperator*{\th-like}{\tanh-like}
+\DeclareMathOperator*{\cth-like}{\coth-like}
+\DeclareMathOperator*{\tg-like}{\tan-like}
+\DeclareMathOperator*{\ctg-like}{\cot-like}
+\DeclareMathOperator*{\arctg-like}{\arctan-like}
+\DeclareMathOperator*{\arcctg-like}{\arctan-like}
+
+\begin{document}
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+    \section{Теория множеств}
+    \justifying
+    \subsection{Основные определения}
+    \begin{math}
+        a \in A\\
+        \varnothing\\
+        A \subset B <=> A \subseteq B \; and \; \exists x (x \in B i x \not \in A)\\
+        A \subseteq B <=> \forall x (x \in A => x \in B)\\
+        A=B <=> A \subseteq B \; and \; B \subseteq A\\
+        A \land B = {x|x \in A \; and \; x \in B}\\
+        A \lor B = {x|x \in A \; or x \; \in B}\\
+        A \setminus B={x|x \in A \; and \; x \not \in B}\\
+        A \bigtriangleup B = (A \lor B) \setminus (A \land B)=
+        (A \setminus B) \lor (B \setminus A)\\
+        \bar{A_B}=B \setminus={x \in B | x \not \in A}\\
+        A \; \text{x} \; \dots\; \text{x}\; A_n = {(a_1,\dots,a_n)|\forall i \in n (a_i \in A_i)}\\
+        \text{Где $(a_1,\dots,a_n)$ - упорядоченный набор который определяется следующим образом}\\
+    \end{math}
+    \begin{enumerate}
+        \item n=0 => $\varnothing$
+        \item n=1 => {$a_1$}
+        \item n=2 => ${{a_1},{a_1,a_2}}$
+        \item n>2 => ($a_1,\dots,a_{n-1},a_n$)=($(a_1,\dots,a_{n-1}),a_n$)
+    \end{enumerate}
+    $(1,2,3)^{4)}=((1,2),3)^{3)}$=${{(1,2)},{3}}^{3}$={{{1},{1,2}},{(1,2),3}}=
+    {{{{1},{1,2}}},{{{1},{1,2}},3}}
+
+    \subsection{Бинарное отношение}
+    \underline{Опр} Множество $\rho \subseteq A_1 x\dots x A_n$ называется n-местеыми отношениями на
+    $(A_1,\dots,A_n)(n>0)$. Если $A_1=A_2=\dots=A_n(=A)$то $\rho$ называется n-местными отмношениями
+    на A. Если n=2, то $\rho$ называется бинарным\\
+    \underline{Пример}:\begin{enumerate}
+        \item A={1,2,3}
+        \item B={a,b}
+        \item AxB={(1,a),(2,a),(3,a),(1,b),(2,b),(3,b)}
+        \item BxA={(a,1),(a,2),(a,3),(b,1),(b,2),(b,3)}
+    \end{enumerate}
+    \underline{Опр} Пусть $\rho \subseteq AxB$\\
+    Dom($\rho$)={$x\in A |\exists y \in b:(x,y)\in \rho$} - область определения\\
+    Im ($\rho$)={$y \in B|\exists x \in A:(x,y)\in \rho$} - мн в значении\\
+    $\rho^{-1}$ = {$(y,x)\in BxA|(x,y)\in \rho$} - обратное к $\rho$
+
+    \subsection*{Свойства бинаных отношений на A}
+    Пусть $\rho \subseteq A^2$. Тогда\\
+    \begin{enumerate}
+        \item $\rho$ рефлексивно <=> $\forall x \in A((x,x)\in \rho)$ definition
+        \item $\rho$ симметрично <=> $\forall x,y \in A((x,y)\in \rho => (y,x)\in \rho)$
+        \item $\rho$ транзитивно <=> $\forall x,y,z \in A ((x,y)\in \rho \; and \; (y,z)\in \rho => (x,z)\in \rho)$
+        \item $\rho$ антирефлексивно <=> $\forall x \in A((x,x) \not \in \rho)$
+        \item $\rho$ антисимметрично <=> $\forall x,y \in A (x \not = y \; and \; (x,y)\in \rho => (y,x)\not \in \rho)$
+    \end{enumerate}
+\end{document}
