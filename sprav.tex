@@ -174,4 +174,194 @@
         \item a - наименьший $\overset{def}{<=>} \forall x \in A (a \not = x \Rightarrow <a,x> \in \rho)$
         \item a - наибольший $\overset{def}{<=>} \forall x \in A (a \not = x \Rightarrow <x,a> \in \rho)$
     \end{enumerate}
+
+    \subsection{Алгебраические операции}%6 параграф, спиздить с 4-5
+    \underline{Определение: } Отображение o:$A^n \rightarrow A$ - называется n-местной 
+    операцией на A\\
+    \underline{Пример:}
+    \begin{enumerate}
+        \item +: $\mathcal{Z}^n \rightarrow \mathcal{Z}$
+        $<-1,5> \rightarrow 4$\\
+        $<0,7> \rightarrow 7$
+        \item $\lnot: A \rightarrow A, A$ мн-во во всех
+        \item x $V_2^2 \rightarrow V_2$\\
+        $<\overset{\rightarrow}{a},\overset{\rightarrow}{b}> \rightarrow \overset{\rightarrow}{c}
+        ,$ где $\overset{\rightarrow}{c}=\overset{\rightarrow}{a}*\overset{\rightarrow}{b}$
+        \item $\ast $: $N^0\rightarrow N$
+        ${\oslash } \ast(\oslash)=0$
+        \item :: $N^2 \rightarrow N$-не отражения\\
+        <5,2> $\rightarrow$ ?
+        \item div: $N^2\rightarrow N$\\
+        <5,2> $\rightarrow$2
+    \end{enumerate}
+    \subsection*{Свойства операций}
+    Пусть o-двухместная операция на А
+    \begin{enumerate}
+        \item o коммунитативна $\overset{def}{\Leftrightarrow} \forall x,y \in A(x o y = y o x)$
+        \item o ассоциативна $\overset{def}{\Leftrightarrow} \forall x,y,z \in A (xo(yz)=(xoy)z)$
+        \item o идентичная отн о $\overset{def}{\Leftrightarrow} e o e = e$
+        \item о индепотентная $\overset{def}{\Leftrightarrow} \forall x \in a (x o x =x)$
+        \item о нейтральный отн о $\overset{def}{\Leftrightarrow} \forall x \in A(x o e=eox)$
+        \item o обратная слева/справа $\overset{def}{\Leftrightarrow} \forall x \in A \exists y \in A:yox=e/xoy=e$
+        \item e - нулевой элемент o $\overset{def}{\Leftrightarrow} \forall x \in A(x o e=eox=e)$
+        \item o сократима слева/справа $\overset{def}{\Leftrightarrow} \forall x,y,z \in A(xoy=xoz/yox=zox \Rightarrow y=z)$\\
+        Пусть * - двфухместная операция на А
+        \item * дистрибутивна слева/справа отн о $\overset{def}{\Leftrightarrow} \forall x,y,z \in A(x*(yoz)=(x*y)o(x*z))/
+        (yoz)*x=(y*x)o(z*x)$
+    \end{enumerate}
+    \underline{Определение: } Пусть о - n-местная операция на A, $B \sqsubseteq A$.\\
+    Множество B называется замкнутым относительно o если $\forall x,y \in B(xoy \in B)$
+    \subsection{Мощность множества}
+    \underline{Определение: } Множества А и В называются равномощными, если существует
+    биективное отображени $\varphi: A\rightarrow B$\\
+    \underline{Обозначение: |A|=|B|}
+    \underline{Пример:}
+    \begin{enumerate}
+        \item $|\mathcal{N}| = |\mathcal{Z}|$\\
+        $\mathcal{Z}: ..,-3,-2,-1,0,1,2,3,...$
+        \item $|\mathcal{N}|=|\mathcal{Q}|$
+        \item $|\mathcal{Z}|=|\mathcal{Q}|$
+    \end{enumerate}
+    \subsubsection*{Теорема 4(Кантора-Бернштейна)}\label{th:1.7.4}
+    |A|=|B| $\Leftrightarrow$ существуют инъективные оторбражения($\varphi: A\rightarrow B$ и $f:B\rightarrow A$)\par\noindent
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        ($\rightarrow$) |A|=|B| $\overset{\text{по опр}}{\Rightarrow} \exists \varphi A \rightarrow B$ - биекция\\
+        $\varphi$ - инъективное отображение\\
+        $\varphi^{-1}$ - тоже биекция\\
+        $\varphi^{-1}: B\rightarrow A$ инъекция\\
+        ($\leftarrow$) Пусть $\varphi: A\rightarrow B $ и $f:B \rightarrow A$ - инъективное отображение\\
+        Пусть $a \in A$ Построим цепи=ь с концом a след. образом:
+        \begin{itemize}
+            \item если у а нет прообразов по f, то будем говорить что цепь с концом а имеет вид а и длину 1
+            \item в противном случаем сущ. единств. $b \in B$ такой что f(b)=a
+            \item если у b нет  прообразов по $\varphi$, то будем говорить что цепь с концом а имеет вид $a \leftarrow b$
+            \item в противном случае существует единственное $a' \in A$ такой что $\varphi(a')=b$
+            \item если у a'...
+        \end{itemize}
+        Этот процесс либо остановится, и мы скажем что цепь с концом а имеет длину $n \in N$, либо нет, и мы скажем
+        что цепь с концом а имеет длину $\infty$. Таким образом мы построим цепи для всех элементов множества
+        A , и аналогичным образом для B
+    \end{adjustwidth}
+    Введем обозначения: $A_o \sqsubseteq A$ - множество элементов из А, которые являются концами цепей
+    четной длиной\\
+    $A_1 \sqsubseteq A$ - с нечетной длиной\\
+    $A_\infty \sqsubseteq A$ - с длиной $\infty$\\
+    Аналогично $B_0,B_1,B_\infty \sqsubseteq B$\\
+    Заметим что $A_0 \lor A_1 \lor A_\infty=A, B_0 \lor B_1 \lor B_\infty =B$\\
+    $\forall i,j \in \{0,1,\infty\}(i \not = j \Rightarrow A_i \land A_j= \oslash \; B_i\land B_j=\oslash)$\\
+    $f:B_1 \rightarrow A_0$ сюръективно, т.к. $\forall a \in A_0 \exists b \in B_1:f(b)=a$\\
+    $\varphi: A_1 \rightarrow B_0$ также сюръективно\\
+    Тогда $h: A \rightarrow B$ такое, что для любого $x \in A$
+
+    \section{Хуй пойми какая(списать у народа)}
+    \underline{Определение: } Множество функций $F_1,F_2,\dots,F_n,AB$ называется противоречием или невыполнимыми, если $F_1 \bigwedge F_n \equiv F$\\
+    \underline{Обозначение}$F_1,\dots,F_n \models $\\
+    \underline{Обозначение}$F \equiv \theta \Rightarrow \models$\\
+    \subsubsection*{Теорема 8(эквивалентности условия)}\label{th:2.8}
+    Следующие условия эквивалентности:\par\noindent
+    \begin{enumerate}
+        \item $F_1,\dots,F_n \models F$
+        \item $F_1,\dots,F_{n+1} \models F_n \rightarrow F$
+        \item $\models F_1 \rightarrow(F_2 \rightarrow(\dots \rightarrow (F_n \rightarrow F)))$
+        \item $F_1,\dots,F_n \urcorner F \models$
+        \item $F_1 \wedge F_n \models F$
+        \item $\models F_1 \wedge F_n \rightarrow F$
+        \item $F_1 \wedge \dots \wedge F_n \wedge \urcorner F \models$
+    \end{enumerate}    
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        $3 \Longleftrightarrow  6$\\
+        Дано $\models F_1 \rightarrow(\dots \rightarrow(F_n \rightarrow F))$\\
+        Доказать: $\models F_1 \wedge \dots \wedge F_n \rightarrow F$\\
+        \[\blacktriangleleft F_1 \rightarrow(F_2 \rightarrow \dots(F_k \rightarrow F)) \equiv \urcorner F_1
+        \vee \urcorner F_2 \vee \dots \vee \urcorner F_n \vee F \equiv (F_1 \wedge \dots F_n) \wedge F \equiv
+        F_1 \wedge \dots F_n \rightarrow \equiv \theta \blacktriangleright\]
+    \end{adjustwidth}
+
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        $1 \Rightarrow 7$\\
+        Дано $F_1,\dots,F_n \models F$\\
+        Доказать $F_1,\dots, F_n \models$\\
+        $\blacktriangleleft$Получим противоречие: существует $\overline{\varepsilon}=\{u,\wedge\}$, такой что \\
+        \[F_1(\overline{\varepsilon}) \wedge \dots \wedge F_n(\overline{\varepsilon})\wedge \urcorner F(\overline{\varepsilon})
+        = U \Rightarrow F_1(\overline{\varepsilon})=U,\dots,F_n(\overline{\varepsilon})=U \text{ и } \urcorner F(\overline{\varepsilon})
+        \Rightarrow F(\overline{\varepsilon})=\wedge\] \\
+        Получили противоречие $\blacktriangleright$
+    \end{adjustwidth}
+
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        $2 \Rightarrow 4$\\
+        Дано: $F_1,\dots,F_{n-1}\models F_n \rightarrow F$\\
+        Доказать $F_1,\dots,F_n,\urcorner F \models$
+        %дописать, маня во флуд моаиса кинула
+    \end{adjustwidth}
+    \section{7. Метод резолюций в алгебре высказываний}
+    \underline{Определение: } Пусть $F \rightleftarrows X \vee \theta_1, \psi \rightleftarrows
+    \urcorner X \vee \theta_2$, где X - логическая переменная, $\theta_1,\theta_2$ - 
+    эквивалентные дизъюнкции АВ. Резольвентой функции F и $\psi$ называются ф-ла $\theta_1 \vee \theta_2$\\
+    \underline{Обозначение} $\text{res}_x(F,\psi)$\\
+    \textbf{Лемма(правило резолюций) :}\\
+    \[F,\psi \models \text{res}_x(F,\psi)\]\\
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        \[\text{Пусть }F \rightleftarrows X \vee \theta_1,\psi \rightleftarrows \urcorner X \vee \theta_2\]\\
+        \[F \wedge \psi \wedge \urcorner \text{res}_x(F,\psi)\equiv (X \vee \theta_1)\wedge(\urcorner X \vee \theta_2)
+        \wedge \urcorner(\theta_1 \vee \theta_2) \equiv (X \vee \theta_1) \wedge (\urcorner X \vee \theta_2) \wedge \urcorner \theta_1 
+        \wedge \urcorner \theta_2 \equiv\]\\
+        \[X \wedge \urcorner \theta_1 \wedge \urcorner X \wedge \urcorner \theta_2 = \Theta\]
+    \end{adjustwidth}
+    \underline{Замечание:} Вообще говоря в определении резольвенты,  формула $\theta_1$ или (и) $\theta_2$ могут отсутствовать. В этом случае резольвенты
+    (будем называть) $\theta_1,\theta_2$ или специальную формулу, которую будем называть пустым дизъюнктом и обозначать $\varnothing$\\
+    \underline{Определение: } Последовательность формул $\psi_1,\dots,\psi_k$ называется резолютивным выводом
+    формулы F из множества $\{F_1,\dots,F_n\}$ формул АВ, если для любого $i \leq k$ выполняется условие:\\
+    \[\psi_i \in \{F_1,\dots,F_n\} \text{ или } \psi_i \leq \text{res}(\psi_j,\psi_i),\text{ где } j,i < i\]\\
+    \[\psi_k \rightleftarrows F.\]\\
+    \underline{Пример:}\\
+    \begin{math}
+        F_1 \rightleftarrows A \vee \urcorner B \vee C\\
+        F_2 \rightleftarrows B \vee C\\
+        F_3 \rightleftarrows \urcorner A \vee C\\
+        F_4 \rightleftarrows \urcorner C\\
+        \text{Существует резолютивный вывод } \varnothing  \text{ из } \{F_1,\dots,F_n\} 
+    \end{math}
+
+    \begin{math}
+        \psi_1 \rightleftarrows A \vee \urcorner B \vee C (\rightleftarrows F_1)\\
+        \psi_2 \rightleftarrows \urcorner A \vee C (\rightleftarrows F_3)\\
+        \psi_3 \rightleftarrows \text{res}_A (\psi_1,\psi_2) \rightleftarrows \urcorner B \vee C\\
+        \psi_4 \rightleftarrows B \vee C (\rightleftarrows F_2)\\
+        \psi_5 \rightleftarrows \text{res}_B(\psi_3,\psi_4) \rightleftarrows C\\
+        \psi_6 \rightleftarrows \urcorner C (\rightleftarrows F_4)\\
+        \psi_7 \rightleftarrows \text{res}_C(\psi_5,\psi_6)\rightleftarrows \varnothing
+    \end{math}
+    \underline{Замечание:} Из определения ясно, формулы $F_1,F_n, F$ - являются элементарными дизъюнктами\\
+    \subsubsection*{Теорема 9(О полноте метода резолюций)}\label{th:7.9}
+    Множества элементарных дизъюнкций противоречиво, тогда и только тогда, когда существует резолютивный вывод 
+    $\varnothing$ из этого множества\par\noindent
+    \underline{Метод резолюций}\\
+    Задача: $F_1,\dots,F_n \models ? \; F_i - $ любая формула АВ\\
+    \begin{enumerate}
+        \item Найти КНФ каждой формулы $F_1,\dots,F_n$
+        \item Раздробить каждую КНФ из п.1 на элементарные дизъюнкты
+        \item Попробовать построить резолютивный вывод$\varnothing$ из множества элементарных дизъюнктов из п.2
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item если $\varnothing$ выводится, то $F_1,\dots,F_n \models$
+        \item если $\varnothing$ не выводится, то $F_1,\dots,F_n \not \models$
+    \end{enumerate}
+
+    \begin{math}
+        F_1 \rightleftarrows A \vee B \vee C \\
+        F_2 \rightleftarrows A \rightarrow B \vee C \\
+        F_3 \rightleftarrows \urcorner C\\
+        A \rightleftarrows B
+    \end{math}
+    КНФ($F_1$) $\rightleftarrows A \vee B \vee C$\\
+    КНФ($F_2$) $\rightleftarrows \urcorner A \vee B \vee C$\\
+    КНФ($F_3$) $\rightleftarrows \urcorner C$\\
+    КНФ($\urcorner F$) $\rightleftarrows \urcorner C$\\
 \end{document}

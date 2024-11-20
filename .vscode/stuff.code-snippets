@@ -248,5 +248,13 @@
 			"\\frac{\\partial f}{\\partial $1}$0"
 		],
 		"description": "stuff for mat"
+	},
+	"oboznach": {
+		"scope": "tex,latex",
+		"prefix": "обозначение",
+		"body": [
+			"\\underline{Обозначение}"
+		],
+		"description": "stuff for mat"
 	}
 }
