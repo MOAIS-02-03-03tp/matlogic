@@ -1,16 +1,31 @@
 \documentclass[12pt]{article}
 \usepackage[a4paper, total={7in,10in}]{geometry}
+
 \usepackage{polyglossia}
 \usepackage{ragged2e}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{microtype}
 \usepackage{graphicx}
-\let\ORIincludegraphics\includegraphics
-\renewcommand{\includegraphics}[2][]{\ORIincludegraphics[scale=0.65,#1]{#2}}
 \usepackage{changepage}
 \usepackage{hyperref}
 \usepackage{cancel}
+\usepackage{wrapfig}
+\usepackage{needspace}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{esint}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle, draw, inner sep=1pt, 
+        minimum height=12pt] (char) {#1};}}
+
+
+
+\let\ORIincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{\ORIincludegraphics[scale=0.65,#1]{#2}}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+
 \graphicspath{{./images/}}
 \setmainlanguage{russian}
 \setotherlanguage{english}
@@ -35,333 +50,119 @@
     \pagebreak
     \section{Теория множеств}
     \justifying
-    \subsection{Основные определения}
-    \begin{math}
-        a \in A\\
-        \varnothing\\
-        A \subset B <=> A \subseteq B \; and \; \exists x (x \in B i x \not \in A)\\
-        A \subseteq B <=> \forall x (x \in A => x \in B)\\
-        A=B <=> A \subseteq B \; and \; B \subseteq A\\
-        A \land B = {x|x \in A \; and \; x \in B}\\
-        A \lor B = {x|x \in A \; or x \; \in B}\\
-        A \setminus B={x|x \in A \; and \; x \not \in B}\\
-        A \bigtriangleup B = (A \lor B) \setminus (A \land B)=
-        (A \setminus B) \lor (B \setminus A)\\
-        \bar{A_B}=B \setminus={x \in B | x \not \in A}\\
-        A \; \text{x} \; \dots\; \text{x}\; A_n = {(a_1,\dots,a_n)|\forall i \in n (a_i \in A_i)}\\
-        \text{Где $(a_1,\dots,a_n)$ - упорядоченный набор который определяется следующим образом}\\
-    \end{math}
+    \subsection{Основные операции}
+    \begin{itemize}
+        \item $a \subset A$
+        \item $\varnothing$
+        \item $A \subset B \Leftrightarrow A \subseteq B \text{ и } \exists x (x \in B \text{ и } x\not \int A)$
+        \item $A \subseteq B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B)$
+        \item $A \land B = \{x | x \in A \text{ и } x \in B\}$
+        \item $A \lor B = \{x | x \in A \text{ или } x \in B\}$
+        \item $A \ B = \{x | x\in A \text{ и } x \not \in B\}$
+        \item $A \bigtriangleup B = (A \lor B)\backslash(A\land B) = (A\backslash B)\lor(B \backslash A)$
+        \item $\overline{A_B} = B \backslash A = \{x \in B | x \not in A\}$
+    \end{itemize}
+    $A_1$x$\dots$x$A_n$=$\{(a_1,\dots,a_n) | \forall i \in n (a_i \in A_i)\}$, где ($a_1,\dots,a_n$) - упорядоченный набор, который определяется
+    следующим образом:
     \begin{enumerate}
-        \item n=0 => $\varnothing$
-        \item n=1 => {$a_1$}
-        \item n=2 => ${{a_1},{a_1,a_2}}$
-        \item n>2 => ($a_1,\dots,a_{n-1},a_n$)=($(a_1,\dots,a_{n-1}),a_n$)
+        \item $n=0 \Rightarrow \varnothing$
+        \item $n=1 \Rightarrow \{a_1\}$
+        \item $n=2 \Rightarrow \{\{a_1\},\{a_2\}\}(\{\{a_2\},\{a_2,a_1\}\})$
+        \item $n > 2 \Rightarrow (a_1,\dots,a_{n-1},a_n)=((a_1,\dots,a_{n-1}),a_n)$
     \end{enumerate}
-    $(1,2,3)^{4)}=((1,2),3)^{3)}$=${{(1,2)},{3}}^{3}$={{{1},{1,2}},{(1,2),3}}=
-    {{{{1},{1,2}}},{{{1},{1,2}},3}}
-
-    \subsection{Бинарное отношение}
-    \underline{Опр} Множество $\rho \subseteq A_1 x\dots x A_n$ называется n-местеыми отношениями на
-    $(A_1,\dots,A_n)(n>0)$. Если $A_1=A_2=\dots=A_n(=A)$то $\rho$ называется n-местными отмношениями
-    на A. Если n=2, то $\rho$ называется бинарным\\
-    \underline{Пример}:\begin{enumerate}
-        \item A={1,2,3}
-        \item B={a,b}
-        \item AxB={(1,a),(2,a),(3,a),(1,b),(2,b),(3,b)}
-        \item BxA={(a,1),(a,2),(a,3),(b,1),(b,2),(b,3)}
-    \end{enumerate}
-    \underline{Опр} Пусть $\rho \subseteq AxB$\\
-    Dom($\rho$)={$x\in A |\exists y \in b:(x,y)\in \rho$} - область определения\\
-    Im ($\rho$)={$y \in B|\exists x \in A:(x,y)\in \rho$} - мн в значении\\
-    $\rho^{-1}$ = {$(y,x)\in BxA|(x,y)\in \rho$} - обратное к $\rho$
-
-    \subsection*{Свойства бинаных отношений на A}
-    Пусть $\rho \subseteq A^2$. Тогда\\
+    \[(1,2,3)=((1,2),3)=\{\{(1,2)\},\{3\}\}=\{\{1\},\{2\},\{3\}\}=\{\{\{1\},\{1,2\}\}\},\{\{\{1\},\{1,2\}\},3\}\]
+    \subsection{Бинарные отношения}
+    \underline{Определение: } Множество $\rho \supseteq A_1 \text{x}\dots \text{x}A_n$ - называется n-местным отношением на ($A_1,\dots,A_n$)
+    (n>0). Если $A_1 =A_2 = \dots = A_n = A$, то $\rho$ называется n-местным отношением на A. Если n=2, то $\rho$ называется бинарным отношением.
+    \subsection*{Пример:}
+    \[A=\{1,2,3\}\]
+    \[B=\{a,b\}\]
+    \[A \text{ x } B = \{(1;a),(2;a),(3;a),(1,b),(2,b),(3,b)\}\]
+    \[B \text{ x } A = \{(a;1),(a;2),(a;3),(b,1),(b,2),(b,3)\}\]
+    \begin{itemize}
+        \item $\rho_1,\rho_2 \subseteq A \text{ x } B$
+        \item $\rho_1 = \{(1;a),(1;b)\}$
+        \item $\rho_2 = \{(1;a),(1;b),(2;b)\}$
+        \item $\rho_3 \subseteq A^2$
+        \item $\rho_3 = \{(1,1),(1,2),(3;1)\}$
+        \item $\rho_4,\rho_5 \subseteq A \text{ x } B \text{ x } A$
+        \item $\rho_4 = \{(1,b,2),(3,a,1)\}$
+        \item $\rho_5 = \varnothing$
+    \end{itemize}
+    \underline{Определение: } Пусть $\rho$ = A x B
+    \[\text{Dom}(\rho)\overset{\text{def}}{=}\{x \in A | \exists y \in B:(x,y) \in \rho\} \text{ - область определения}\]
+    \[\text{Im}(\rho)\overset{\text{def}}{=}\{y \in B | \exists x \in A:(x,y)\in \rho\} \text{ - область значений}\]
+    \[\rho^{-1}\overset{\text{def}}{=} \{(y,x)\in B \text{ x } A | (x,y)\in \rho\} \text{ - обратное к } \rho\]
+    \underline{Пример:} 
+    \[\text{Dom}(\rho_2)=\{1,2\}\]
+    \[\text{Im}(\rho_2)=\{a,b\}\]
+    \[\rho^{-1}=\{(a,1),(b,1),(b,2)\}\]
+    \subsection*{Своства бинарный отнешений на A:}
+    Пусть $\rho \subseteq A^2$. Тогда:
     \begin{enumerate}
-        \item $\rho$ рефлексивно <=> $\forall x \in A((x,x)\in \rho)$ definition
-        \item $\rho$ симметрично <=> $\forall x,y \in A((x,y)\in \rho => (y,x)\in \rho)$
-        \item $\rho$ транзитивно <=> $\forall x,y,z \in A ((x,y)\in \rho \; and \; (y,z)\in \rho => (x,z)\in \rho)$
-        \item $\rho$ антирефлексивно <=> $\forall x \in A((x,x) \not \in \rho)$
-        \item $\rho$ антисимметрично <=> $\forall x,y \in A (x \not = y \; and \; (x,y)\in \rho => (y,x)\not \in \rho)$
+        \item $\rho$ - рефлексивное $\overset{\text{def}}{\Leftrightarrow} \forall x \in A ((x,x)\in \rho)$
+        \item $\rho$ - симметричное $\overset{\text{def}}{\Leftrightarrow} \forall x \in A ((x,y)\in \rho \Rightarrow (y,x) \in \rho)$
+        \item $\rho$ - транзитивно $\overset{\text{def}}{\Leftrightarrow} \forall x,y,z \in A ((x,y)\in \rho \text{ и } (y,z)\in \rho
+        \Rightarrow (x,z) \in \rho)$
+        \item $\rho$ - антирефлексивно $\overset{\text{def}}{\Leftrightarrow} \forall x \in A ((x,x) \not \in \rho)$
+        \item $\rho$ - антисиметрично $\overset{\text{def}}{\Leftrightarrow} \forall x \in A (x \not = y \text{ и } (x,y) \in \rho
+        \Rightarrow (y,x)\not \in \rho)$
+        \item $\rho$ - связное $\overset{\text{def}}{\Leftrightarrow}\forall x,y \in A (x \not = y \Rightarrow (x,y)\in \rho \text{ или }
+        (y,x)\in \rho)$
     \end{enumerate}
     \subsection{Отношение эквивалентности}
-    \underline{Определение: }Бинарное отношение на множестве называется экивалентным, если оно 
-    рефлексивно, симметрично, транзитивно.\\
-    \underline{Пример:}\\
+    \underline{Определение: } Бинарное отношение $\rho \subseteq A^2$ называется отношением эквивалентности, если оно рефлексивно,
+    симметрично и транзитивно.\\
+    \underline{Пример:} 
     \begin{enumerate}
-        \item $\overset{\equiv}{5}$ на $\mathcal{Z}$\\
-        x $\overset{\equiv}{5}$ y <=> x-y $\vdots$ 5\\
+        \item $\overset{5}{\equiv}$ на Z\\
+        $x \underset{5}{\equiv} y \Leftrightarrow x-y \vdots 5$
         \begin{enumerate}
-            \item $x-y \vdots 5 => x \overset{\equiv}{5} x$ - рефлексивно
-            \item $x \overset{\equiv}{5} y => x-y \vdots 5 => y-x \vdots 5 => y \overset{\equiv}{5}
-            x $ - симметрично
-            \item $\begin{matrix}
-                x \overset{\equiv}{5} y => x-y \vdots 5\\
-                y \overset{\equiv}{5} \mathcal{Z} => y - \mathcal{Z} \vdots 5
-                \end{matrix} \Bigg\} x-\mathcal{Z} \vdots 5 => x \overset{\equiv}{5} \mathcal{Z}$ - транзитивно 
+            \item $x-x \vdots 5 \Rightarrow x \equiv x $ рефлексивно
+            \item $x \underset{5}{\equiv} \Rightarrow x-y\vdots 5 \Rightarrow y-x \vdots 5 \Rightarrow y \underset{5}{\equiv} x $ симметрично
+            \item $x \underset{5}{\equiv} y \Rightarrow x-y\vdots 5$
+            \[y\underset{5}{\equiv}z\Rightarrow \frac{y-z\vdots 5}{x-z\vdots 5}\Rightarrow x \underset{5}{\equiv} z \] транзитивно
         \end{enumerate}
-        \item A - ин-во все студентов в E702\\
-        <x,y> $\in \rho \overset{def}{<=>}$ x и y сидят в одном ряду
-        \item A - мн-во $\Delta $-ов пл-ти\\
-        $<\Delta_1,\Delta_2> \in \rho \overset{def}{<=>} \Delta_1 \sim  \Delta_2$\\
-        $\rho$ - отношение эквивалентности
+        \item  А - множество всех студентов в аудитории E702.\\
+        \begin{minipage}{0.3\textwidth}
+            \includegraphics[scale=0.3]{1.1.png}
+        \end{minipage}
+        \hspace{1em}
+        \begin{minipage}{0.7\textwidth}
+            $<x,y> \in \rho \overset{\text{def}}{\Leftrightarrow}$ x и y сидят в одном ряду\\
+            \par
+        $\rho$ - рефлексивно, симметрично, транзитивно $\Rightarrow$\\$\rho$- отношение эквивалентности
+        \end{minipage}
+        \begin{minipage}{0.55\textwidth}
+            \item А - множество $\bigtriangleup$ плоскости\\
+            $<\bigtriangleup_1,\bigtriangleup_2> \in \rho \overset{\text{def}}{\Leftrightarrow}$\\
+            $\rho - \text{ отношение эквивалентности }$\\
+        \end{minipage}
+        \begin{minipage}{0.45\textwidth}
+            \includegraphics[scale=0.3]{1.2.png}
+        \end{minipage}
+        \hspace{1em}
+        \vspace{1em}
+        \par
     \end{enumerate}
-    \underline{Определение: } Пусть $\rho$ - отн эквивалентности на A, a $\in$ A\\
-    Мн-во $\frac{a}{\rho}=x \in A \Big|<a,x> \in \rho \Big| $ называется классом эквивалентности
-    с представлением a.
-    \subsubsection*{Теорема 1.3.1}\label{th:1.3.1} 
-    $\sqsupset$ $\rho$ - отношение эквивалентности, на A, a,b $\in A$, тогда <a,b> $\in \rho$
-    <=> классом эл-ов a и b совпадают $\frac{a}{\rho}=\frac{b}{\rho}$\par\noindent
+    \underline{Определение: } Пусть $\rho$ - отношение эквивалентности на А, $a \in A$. Множество \\
+    $\frac{a}{\rho}$=$\{x \in A | <a,x> \in \rho\}$ называется классов эквивалентности с представителем
+    \subsubsection*{Теорема 1}\label{th:1}
+    \par\noindent
+    Пусть $\rho$ - эквивалентность на А, a и b $\in A$. Тогда $<a,b> \in \rho \Leftrightarrow \frac{a}{\rho}=\frac{b}{\rho}.$\\
+    \par\noindent
     \underline{Доказательство:}
     \begin{adjustwidth}{1.5em}{1.5em}
-        $\Rightarrow \sqsupset x \in \frac{a}{\rho}$ по опр. <a,x> $\in \rho$. Т.к. <a,b>
-        $\in \rho$ и $\rho$ асимметрично, то <b,a> $\in \rho$ $\overset{\text{транз $\rho$}}{\Rightarrow}$
-        <b,x>$\in \rho \Rightarrow x \in \frac{b}{\rho} \Rightarrow \frac{a}{\rho}\leq \frac{b}{\rho}$,
-        аналогично $\frac{b}{\rho}\leq\frac{a}{\rho} \Rightarrow \frac{a}{\rho}=\frac{b}{\rho}$\\
-        $\Leftarrow$ Т.к. $\rho$ рефлексивно, то <a,a> $\in \rho$, т.е. $a \in \frac{a}{\rho}$. Из
-        $\frac{a}{\rho}=\frac{b}{\rho} \Rightarrow 2 \in \frac{b}{\rho}$, поэтому <b,a>$\in \rho
-        \Rightarrow <a,b> \in \rho$
+        $\boxed{\Rightarrow}$ Пусть $x \in \frac{a}{\rho}.$ По определению $<a,x> \in \overset{(1)}{\rho}$. \\
+        Так как $<a,b>\in \rho$ и $\rho$ - симметрично, то $<b,a> \in \overset{(2)}{\rho}$\\
+        (1)(2) $\underset{\rho \text{ - транзитивно}}{\Rightarrow} <b,x> \in \rho \Rightarrow x \in \frac{b}{\rho}$.\\
+        То $\frac{a}{\rho} \subseteq \frac{b}{\rho}.$ Аналогично, $\frac{b}{\rho} \subseteq \frac{a}{\rho}$. 
+        Следовательно $\frac{a}{\rho}=\frac{b}{\rho}$\\
+        $\boxed{\Leftarrow}$ Так как - $\rho$ рефлексивно, то $<a,a> \in \rho,$ то есть $a \in \frac{a}{\rho}$.\\
+        Из $\frac{a}{\rho}=\frac{b}{\rho}$ следует, что $a \in \frac{b}{\rho}.$ Поэтому $<b,a> \in \rho$, и за счёт
+        метричности $\rho$ получим, что $<a,b> \in \rho$
     \end{adjustwidth}
-    \subsection{Отношение порядка}
-    \underline{Определение: } Бинарное отношение $\rho$ на мн-ве A называется отношением
-    порядка, если оно антиасимметрично и транзитивно.
-    \begin{enumerate}
-        \item Если $\rho$ рефлексивно то оно называется не строгим
-        \item Если $\rho$ антирефлексивно то строгим порядком
-        \item Если $\rho$ связно, то линейным порядком
-    \end{enumerate}
-    \underline{Определение: } Если на мн-ве A введено отношение порядка $\rho$, то A
-    называют упорядоченным с помощью $\rho$ мн-вом.\\
-    \underline{Пример:} $\leq$ на $\mathcal{Z}$
-    \begin{enumerate}
-        \item <x,y> $\in \leq <=>(\exists t \in N \; x+\mathcal{Z}=y)$ или x=y
-        \begin{enumerate}
-            \item $\left.
-              \begin{aligned}
-                x \leq y \\
-                y \leq x
-              \end{aligned}
-              \right\} \Rightarrow x = y$ - антисимметричность
-            \item $\left.
-              \begin{aligned}
-                x \leq y \\
-                y \leq t
-              \end{aligned}
-              \right\} \Rightarrow x \leq t$ - транзитивность\\
-              Оба пункта образуют порядок
-            \item $\psi \leq x$ => не строгий порядок
-            \item $\psi \not =$ y => $x \leq y$ или $y \leq x$ => линейный
-        \end{enumerate}
-        \item Рассмотрим на $\rho(\mathcal{A}),$ где $\mathcal{A}=<a,b>$\\
-        <x,y> $\in \leq <=> x \leq y,$ где $x,y \in \mathcal{A}$
-        \begin{enumerate}
-            \item $\begin{aligned}
-                x \leq y\\
-                y \leq \psi
-            \end{aligned}\Bigg\} \psi \leq y$
-            \item $\begin{aligned}
-                x \leq y\\
-                y \leq \mathcal{Z}
-            \end{aligned}\Bigg\} x \leq \mathcal{Z}$
-            \item $x \leq \psi \Rightarrow$ не строгий порядок
-            \item $\{a\} \not = \{b\},$ на $\{a\} \leq \{b\}$ и $\{b\} \leq \{a\} \Rightarrow $ не линейный
-        \end{enumerate}
-    \end{enumerate}
-    \underline{Определение: }$\sqsupset \rho-$ порядок на A, $a \in A,b \in A$
-    \begin{enumerate}
-        \item a - минимальный $\overset{def}{<=>} \forall x \in A (<x,a> \in \rho \Rightarrow x =a)$
-        \item a - максимальный $\overset{def}{<=>} \forall x \in A (<a,x> \in \rho \Rightarrow x =a)$
-        \item a - наименьший $\overset{def}{<=>} \forall x \in A (a \not = x \Rightarrow <a,x> \in \rho)$
-        \item a - наибольший $\overset{def}{<=>} \forall x \in A (a \not = x \Rightarrow <x,a> \in \rho)$
-    \end{enumerate}
-
-    \subsection{Алгебраические операции}%6 параграф, спиздить с 4-5
-    \underline{Определение: } Отображение o:$A^n \rightarrow A$ - называется n-местной 
-    операцией на A\\
-    \underline{Пример:}
-    \begin{enumerate}
-        \item +: $\mathcal{Z}^n \rightarrow \mathcal{Z}$
-        $<-1,5> \rightarrow 4$\\
-        $<0,7> \rightarrow 7$
-        \item $\lnot: A \rightarrow A, A$ мн-во во всех
-        \item x $V_2^2 \rightarrow V_2$\\
-        $<\overset{\rightarrow}{a},\overset{\rightarrow}{b}> \rightarrow \overset{\rightarrow}{c}
-        ,$ где $\overset{\rightarrow}{c}=\overset{\rightarrow}{a}*\overset{\rightarrow}{b}$
-        \item $\ast $: $N^0\rightarrow N$
-        ${\oslash } \ast(\oslash)=0$
-        \item :: $N^2 \rightarrow N$-не отражения\\
-        <5,2> $\rightarrow$ ?
-        \item div: $N^2\rightarrow N$\\
-        <5,2> $\rightarrow$2
-    \end{enumerate}
-    \subsection*{Свойства операций}
-    Пусть o-двухместная операция на А
-    \begin{enumerate}
-        \item o коммунитативна $\overset{def}{\Leftrightarrow} \forall x,y \in A(x o y = y o x)$
-        \item o ассоциативна $\overset{def}{\Leftrightarrow} \forall x,y,z \in A (xo(yz)=(xoy)z)$
-        \item o идентичная отн о $\overset{def}{\Leftrightarrow} e o e = e$
-        \item о индепотентная $\overset{def}{\Leftrightarrow} \forall x \in a (x o x =x)$
-        \item о нейтральный отн о $\overset{def}{\Leftrightarrow} \forall x \in A(x o e=eox)$
-        \item o обратная слева/справа $\overset{def}{\Leftrightarrow} \forall x \in A \exists y \in A:yox=e/xoy=e$
-        \item e - нулевой элемент o $\overset{def}{\Leftrightarrow} \forall x \in A(x o e=eox=e)$
-        \item o сократима слева/справа $\overset{def}{\Leftrightarrow} \forall x,y,z \in A(xoy=xoz/yox=zox \Rightarrow y=z)$\\
-        Пусть * - двфухместная операция на А
-        \item * дистрибутивна слева/справа отн о $\overset{def}{\Leftrightarrow} \forall x,y,z \in A(x*(yoz)=(x*y)o(x*z))/
-        (yoz)*x=(y*x)o(z*x)$
-    \end{enumerate}
-    \underline{Определение: } Пусть о - n-местная операция на A, $B \sqsubseteq A$.\\
-    Множество B называется замкнутым относительно o если $\forall x,y \in B(xoy \in B)$
-    \subsection{Мощность множества}
-    \underline{Определение: } Множества А и В называются равномощными, если существует
-    биективное отображени $\varphi: A\rightarrow B$\\
-    \underline{Обозначение: |A|=|B|}
-    \underline{Пример:}
-    \begin{enumerate}
-        \item $|\mathcal{N}| = |\mathcal{Z}|$\\
-        $\mathcal{Z}: ..,-3,-2,-1,0,1,2,3,...$
-        \item $|\mathcal{N}|=|\mathcal{Q}|$
-        \item $|\mathcal{Z}|=|\mathcal{Q}|$
-    \end{enumerate}
-    \subsubsection*{Теорема 4(Кантора-Бернштейна)}\label{th:1.7.4}
-    |A|=|B| $\Leftrightarrow$ существуют инъективные оторбражения($\varphi: A\rightarrow B$ и $f:B\rightarrow A$)\par\noindent
-    \underline{Доказательство:}
-    \begin{adjustwidth}{1.5em}{1.5em}
-        ($\rightarrow$) |A|=|B| $\overset{\text{по опр}}{\Rightarrow} \exists \varphi A \rightarrow B$ - биекция\\
-        $\varphi$ - инъективное отображение\\
-        $\varphi^{-1}$ - тоже биекция\\
-        $\varphi^{-1}: B\rightarrow A$ инъекция\\
-        ($\leftarrow$) Пусть $\varphi: A\rightarrow B $ и $f:B \rightarrow A$ - инъективное отображение\\
-        Пусть $a \in A$ Построим цепи=ь с концом a след. образом:
-        \begin{itemize}
-            \item если у а нет прообразов по f, то будем говорить что цепь с концом а имеет вид а и длину 1
-            \item в противном случаем сущ. единств. $b \in B$ такой что f(b)=a
-            \item если у b нет  прообразов по $\varphi$, то будем говорить что цепь с концом а имеет вид $a \leftarrow b$
-            \item в противном случае существует единственное $a' \in A$ такой что $\varphi(a')=b$
-            \item если у a'...
-        \end{itemize}
-        Этот процесс либо остановится, и мы скажем что цепь с концом а имеет длину $n \in N$, либо нет, и мы скажем
-        что цепь с концом а имеет длину $\infty$. Таким образом мы построим цепи для всех элементов множества
-        A , и аналогичным образом для B
-    \end{adjustwidth}
-    Введем обозначения: $A_o \sqsubseteq A$ - множество элементов из А, которые являются концами цепей
-    четной длиной\\
-    $A_1 \sqsubseteq A$ - с нечетной длиной\\
-    $A_\infty \sqsubseteq A$ - с длиной $\infty$\\
-    Аналогично $B_0,B_1,B_\infty \sqsubseteq B$\\
-    Заметим что $A_0 \lor A_1 \lor A_\infty=A, B_0 \lor B_1 \lor B_\infty =B$\\
-    $\forall i,j \in \{0,1,\infty\}(i \not = j \Rightarrow A_i \land A_j= \oslash \; B_i\land B_j=\oslash)$\\
-    $f:B_1 \rightarrow A_0$ сюръективно, т.к. $\forall a \in A_0 \exists b \in B_1:f(b)=a$\\
-    $\varphi: A_1 \rightarrow B_0$ также сюръективно\\
-    Тогда $h: A \rightarrow B$ такое, что для любого $x \in A$
-
-    \section{Хуй пойми какая(списать у народа)}
-    \underline{Определение: } Множество функций $F_1,F_2,\dots,F_n,AB$ называется противоречием или невыполнимыми, если $F_1 \bigwedge F_n \equiv F$\\
-    \underline{Обозначение}$F_1,\dots,F_n \models $\\
-    \underline{Обозначение}$F \equiv \theta \Rightarrow \models$\\
-    \subsubsection*{Теорема 8(эквивалентности условия)}\label{th:2.8}
-    Следующие условия эквивалентности:\par\noindent
-    \begin{enumerate}
-        \item $F_1,\dots,F_n \models F$
-        \item $F_1,\dots,F_{n+1} \models F_n \rightarrow F$
-        \item $\models F_1 \rightarrow(F_2 \rightarrow(\dots \rightarrow (F_n \rightarrow F)))$
-        \item $F_1,\dots,F_n \urcorner F \models$
-        \item $F_1 \wedge F_n \models F$
-        \item $\models F_1 \wedge F_n \rightarrow F$
-        \item $F_1 \wedge \dots \wedge F_n \wedge \urcorner F \models$
-    \end{enumerate}    
-    \underline{Доказательство:}
-    \begin{adjustwidth}{1.5em}{1.5em}
-        $3 \Longleftrightarrow  6$\\
-        Дано $\models F_1 \rightarrow(\dots \rightarrow(F_n \rightarrow F))$\\
-        Доказать: $\models F_1 \wedge \dots \wedge F_n \rightarrow F$\\
-        \[\blacktriangleleft F_1 \rightarrow(F_2 \rightarrow \dots(F_k \rightarrow F)) \equiv \urcorner F_1
-        \vee \urcorner F_2 \vee \dots \vee \urcorner F_n \vee F \equiv (F_1 \wedge \dots F_n) \wedge F \equiv
-        F_1 \wedge \dots F_n \rightarrow \equiv \theta \blacktriangleright\]
-    \end{adjustwidth}
-
-    \underline{Доказательство:}
-    \begin{adjustwidth}{1.5em}{1.5em}
-        $1 \Rightarrow 7$\\
-        Дано $F_1,\dots,F_n \models F$\\
-        Доказать $F_1,\dots, F_n \models$\\
-        $\blacktriangleleft$Получим противоречие: существует $\overline{\varepsilon}=\{u,\wedge\}$, такой что \\
-        \[F_1(\overline{\varepsilon}) \wedge \dots \wedge F_n(\overline{\varepsilon})\wedge \urcorner F(\overline{\varepsilon})
-        = U \Rightarrow F_1(\overline{\varepsilon})=U,\dots,F_n(\overline{\varepsilon})=U \text{ и } \urcorner F(\overline{\varepsilon})
-        \Rightarrow F(\overline{\varepsilon})=\wedge\] \\
-        Получили противоречие $\blacktriangleright$
-    \end{adjustwidth}
-
-    \underline{Доказательство:}
-    \begin{adjustwidth}{1.5em}{1.5em}
-        $2 \Rightarrow 4$\\
-        Дано: $F_1,\dots,F_{n-1}\models F_n \rightarrow F$\\
-        Доказать $F_1,\dots,F_n,\urcorner F \models$
-        %дописать, маня во флуд моаиса кинула
-    \end{adjustwidth}
-    \section{7. Метод резолюций в алгебре высказываний}
-    \underline{Определение: } Пусть $F \rightleftarrows X \vee \theta_1, \psi \rightleftarrows
-    \urcorner X \vee \theta_2$, где X - логическая переменная, $\theta_1,\theta_2$ - 
-    эквивалентные дизъюнкции АВ. Резольвентой функции F и $\psi$ называются ф-ла $\theta_1 \vee \theta_2$\\
-    \underline{Обозначение} $\text{res}_x(F,\psi)$\\
-    \textbf{Лемма(правило резолюций) :}\\
-    \[F,\psi \models \text{res}_x(F,\psi)\]\\
-    \underline{Доказательство:}
-    \begin{adjustwidth}{1.5em}{1.5em}
-        \[\text{Пусть }F \rightleftarrows X \vee \theta_1,\psi \rightleftarrows \urcorner X \vee \theta_2\]\\
-        \[F \wedge \psi \wedge \urcorner \text{res}_x(F,\psi)\equiv (X \vee \theta_1)\wedge(\urcorner X \vee \theta_2)
-        \wedge \urcorner(\theta_1 \vee \theta_2) \equiv (X \vee \theta_1) \wedge (\urcorner X \vee \theta_2) \wedge \urcorner \theta_1 
-        \wedge \urcorner \theta_2 \equiv\]\\
-        \[X \wedge \urcorner \theta_1 \wedge \urcorner X \wedge \urcorner \theta_2 = \Theta\]
-    \end{adjustwidth}
-    \underline{Замечание:} Вообще говоря в определении резольвенты,  формула $\theta_1$ или (и) $\theta_2$ могут отсутствовать. В этом случае резольвенты
-    (будем называть) $\theta_1,\theta_2$ или специальную формулу, которую будем называть пустым дизъюнктом и обозначать $\varnothing$\\
-    \underline{Определение: } Последовательность формул $\psi_1,\dots,\psi_k$ называется резолютивным выводом
-    формулы F из множества $\{F_1,\dots,F_n\}$ формул АВ, если для любого $i \leq k$ выполняется условие:\\
-    \[\psi_i \in \{F_1,\dots,F_n\} \text{ или } \psi_i \leq \text{res}(\psi_j,\psi_i),\text{ где } j,i < i\]\\
-    \[\psi_k \rightleftarrows F.\]\\
-    \underline{Пример:}\\
-    \begin{math}
-        F_1 \rightleftarrows A \vee \urcorner B \vee C\\
-        F_2 \rightleftarrows B \vee C\\
-        F_3 \rightleftarrows \urcorner A \vee C\\
-        F_4 \rightleftarrows \urcorner C\\
-        \text{Существует резолютивный вывод } \varnothing  \text{ из } \{F_1,\dots,F_n\} 
-    \end{math}
-
-    \begin{math}
-        \psi_1 \rightleftarrows A \vee \urcorner B \vee C (\rightleftarrows F_1)\\
-        \psi_2 \rightleftarrows \urcorner A \vee C (\rightleftarrows F_3)\\
-        \psi_3 \rightleftarrows \text{res}_A (\psi_1,\psi_2) \rightleftarrows \urcorner B \vee C\\
-        \psi_4 \rightleftarrows B \vee C (\rightleftarrows F_2)\\
-        \psi_5 \rightleftarrows \text{res}_B(\psi_3,\psi_4) \rightleftarrows C\\
-        \psi_6 \rightleftarrows \urcorner C (\rightleftarrows F_4)\\
-        \psi_7 \rightleftarrows \text{res}_C(\psi_5,\psi_6)\rightleftarrows \varnothing
-    \end{math}
-    \underline{Замечание:} Из определения ясно, формулы $F_1,F_n, F$ - являются элементарными дизъюнктами\\
-    \subsubsection*{Теорема 9(О полноте метода резолюций)}\label{th:7.9}
-    Множества элементарных дизъюнкций противоречиво, тогда и только тогда, когда существует резолютивный вывод 
-    $\varnothing$ из этого множества\par\noindent
-    \underline{Метод резолюций}\\
-    Задача: $F_1,\dots,F_n \models ? \; F_i - $ любая формула АВ\\
-    \begin{enumerate}
-        \item Найти КНФ каждой формулы $F_1,\dots,F_n$
-        \item Раздробить каждую КНФ из п.1 на элементарные дизъюнкты
-        \item Попробовать построить резолютивный вывод$\varnothing$ из множества элементарных дизъюнктов из п.2
-    \end{enumerate}
-    
-    \begin{enumerate}
-        \item если $\varnothing$ выводится, то $F_1,\dots,F_n \models$
-        \item если $\varnothing$ не выводится, то $F_1,\dots,F_n \not \models$
-    \end{enumerate}
-
-    \begin{math}
-        F_1 \rightleftarrows A \vee B \vee C \\
-        F_2 \rightleftarrows A \rightarrow B \vee C \\
-        F_3 \rightleftarrows \urcorner C\\
-        A \rightleftarrows B
-    \end{math}
-    КНФ($F_1$) $\rightleftarrows A \vee B \vee C$\\
-    КНФ($F_2$) $\rightleftarrows \urcorner A \vee B \vee C$\\
-    КНФ($F_3$) $\rightleftarrows \urcorner C$\\
-    КНФ($\urcorner F$) $\rightleftarrows \urcorner C$\\
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
 \end{document}

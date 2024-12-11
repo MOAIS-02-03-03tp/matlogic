@@ -249,12 +249,112 @@
 		],
 		"description": "stuff for mat"
 	},
-	"oboznach": {
+	"intl": {
 		"scope": "tex,latex",
-		"prefix": "обозначение",
+		"prefix": "intl",
 		"body": [
-			"\\underline{Обозначение}"
+			"\\int_{(l)}"
+		],
+		"description": "stuff for mat"
+	},
+	"fxy": {
+		"scope": "tex,latex",
+		"prefix": "fxy",
+		"body": [
+			"f(x;y)"
+		],
+		"description": "stuff for mat"
+	},
+	"fxyz": {
+		"scope": "tex,latex",
+		"prefix": "fxyz",
+		"body": [
+			"f(x;y;z)"
+		],
+		"description": "stuff for mat"
+	},
+	"piklr": {
+		"scope": "tex,latex",
+		"prefix": "piklr",
+		"body": [
+			"\\begin{minipage}{0.45\\textwidth}",
+			"  \\includegraphics[scale=0.6]{8.1.1.png}",
+			"\\end{minipage}",
+			"\\hspace{1em}",
+			"\\begin{minipage}{0.55\\textwidth}",
+			"  ",
+			"\\end{minipage}",
+			"\\vspace{1em}",
+			"\\par",
+		],
+		"description": "stuff for mat"
+	},
+	"space": {
+		"scope": "tex,latex",
+		"prefix": "space",
+		"body": [
+			"\\hspace{20pt}"
+		],
+		"description": "stuff for mat"
+	},
+	"xiietai": {
+		"scope": "tex,latex",
+		"prefix": "xiii",
+		"body": [
+			"(\\xi_i;\\eta_i)"
+		],
+		"description": "stuff for mat"
+	},
+	"fphitauipsitaui": {
+		"scope": "tex,latex",
+		"prefix": "fphitauipsitaui",
+		"body": [
+			"f(\\varphi(\\tau_i);\\psi(\\tau_i))"
+		],
+		"description": "stuff for mat"
+	},
+	"tiint": {
+		"scope": "tex,latex",
+		"prefix": "tiint",
+		"body": [
+			"\\int_{t_i}^{t_{i+1}}"
+		],
+		"description": "stuff for mat"
+	},
+	"overr": {
+		"scope": "tex,latex",
+		"prefix": "overr",
+		"body": [
+			"\\overline{r}"
+		],
+		"description": "stuff for mat"
+	},
+	"те": {
+		"scope": "tex,latex",
+		"prefix": "те",
+		"body": [
+			"т.е."
+		],
+		"description": "stuff for mat"
+	},
+	"uv": {
+		"scope": "tex,latex",
+		"prefix": "uv",
+		"body": [
+			"(u;v)"
 		],
 		"description": "stuff for mat"
 	}
+	,
+	"oa": {
+		"scope": "tex,latex",
+		"prefix": "oa",
+		"body": [
+			"\\overline{A}"
+		],
+		"description": "stuff for mat"
+	}
+
+
+	
 }
