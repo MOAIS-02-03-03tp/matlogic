@@ -10,7 +10,8 @@
 \usepackage{changepage}
 \usepackage{hyperref}
 \usepackage{cancel}
-\usepackage{wrapfig}
+\usepackage{ulem}
+\usepackage{wrapfig} 
 \usepackage{needspace}
 \usepackage{mathtools}
 \usepackage{tikz}
@@ -97,7 +98,7 @@
     \[\text{Dom}(\rho_2)=\{1,2\}\]
     \[\text{Im}(\rho_2)=\{a,b\}\]
     \[\rho^{-1}=\{(a,1),(b,1),(b,2)\}\]
-    \subsection*{Своства бинарный отнешений на A:}
+    \subsection*{Своиства бинарный отношений на A:}
     Пусть $\rho \subseteq A^2$. Тогда:
     \begin{enumerate}
         \item $\rho$ - рефлексивное $\overset{\text{def}}{\Leftrightarrow} \forall x \in A ((x,x)\in \rho)$
@@ -105,7 +106,7 @@
         \item $\rho$ - транзитивно $\overset{\text{def}}{\Leftrightarrow} \forall x,y,z \in A ((x,y)\in \rho \text{ и } (y,z)\in \rho
         \Rightarrow (x,z) \in \rho)$
         \item $\rho$ - антирефлексивно $\overset{\text{def}}{\Leftrightarrow} \forall x \in A ((x,x) \not \in \rho)$
-        \item $\rho$ - антисиметрично $\overset{\text{def}}{\Leftrightarrow} \forall x \in A (x \not = y \text{ и } (x,y) \in \rho
+        \item $\rho$ - антисимметрично $\overset{\text{def}}{\Leftrightarrow} \forall x \in A (x \not = y \text{ и } (x,y) \in \rho
         \Rightarrow (y,x)\not \in \rho)$
         \item $\rho$ - связное $\overset{\text{def}}{\Leftrightarrow}\forall x,y \in A (x \not = y \Rightarrow (x,y)\in \rho \text{ или }
         (y,x)\in \rho)$
@@ -161,6 +162,247 @@
         $\boxed{\Leftarrow}$ Так как - $\rho$ рефлексивно, то $<a,a> \in \rho,$ то есть $a \in \frac{a}{\rho}$.\\
         Из $\frac{a}{\rho}=\frac{b}{\rho}$ следует, что $a \in \frac{b}{\rho}.$ Поэтому $<b,a> \in \rho$, и за счёт
         метричности $\rho$ получим, что $<a,b> \in \rho$
+    \end{adjustwidth}
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+    \subsection{Отношение порядка}
+    \underline{Определение:} Бинарное отношение $\rho \subseteq A^2$ называется отношением порядка, если
+    оно антисимметрично и транзитивно.
+    \begin{itemize}
+        \item Если $\rho$ \underline{рефлексивно}, то оно называется \underline{нестрогим} порядком.
+        \item Если $\rho$ \underline{антирефлексивно} - \underline{строгим} порядком.
+        \item Если $\rho$ связно - \underline{линейным} порядком
+        \item Если на $A$ введено отношение порядка $\rho$, то $A$ называют упорядоченным с помощью
+        $\rho$ множеством.
+    \end{itemize}
+    \underline{Пример:}:
+    \begin{enumerate}
+        \item[\circled{1}] $\leq$ на $Z$\\
+        \[<x,y> \in \leq \Leftrightarrow y-x \geq 0 \Leftrightarrow (\exists z \in N: x+z=y) 
+        \text{ или } x=y\]
+
+        $\hspace{10pt}\begin{matrix}
+            1) &
+            \begin{matrix}
+                x\leq y\\  
+                y \leq x
+            \end{matrix} &
+            \Big\} &\Rightarrow x=y & \text{ антисимметрично}\\
+            2) &
+            \begin{matrix}
+                x \leq y\\  
+                y \leq z
+            \end{matrix} &
+            \Big\} & x \leq z & \text{ транзитивно}
+        \end{matrix}
+        \Bigg\} \leq - \text{ порядок}$
+        \begin{enumerate}
+            \item[3)] $x\leq x - \text{рефлексивно} \Rightarrow \leq \text{нестрогий порядок}$
+            \item[4)] $x \not = y \Rightarrow x \leq y \text{ или } y \leq x \text{ связно }
+            \Rightarrow \leq - \text{ линейный порядок}$ 
+        \end{enumerate}
+        \item[\circled{2}] $\subseteq \text{ на } P(A), \text{ где } A = \{a,b\}$\\
+        \[<x,y> \in \subseteq \Leftrightarrow x \subseteq, \text{ где } x,y \in A\]
+        \begin{enumerate}
+            \item[1)] 
+            $\begin{matrix}
+                x \subseteq y\\
+                y \subseteq x
+            \end{matrix} \Bigg\} \Rightarrow x=y$
+            \item[2)] 
+            $\begin{matrix}
+                x \subseteq y\\
+                y \subseteq z
+            \end{matrix} \Bigg\} \Rightarrow x \subseteq z$
+            \item[3)] $x \subseteq x$\\
+            \[1),2),3) \Rightarrow \subseteq - \text{ нестрогий порядок}\]
+            \item[4)] $\{a\} \not = \{b\}, \text{ но } \{a\}\not \subseteq \{b\} 
+            \text{ и } \{b\} \not \subseteq \{a\}$
+            \[\subseteq - \text{ нелинейный порядок}\]
+        \end{enumerate}
+    \end{enumerate}
+    \pagebreak
+    \underline{Определение: } Пусть $\rho$ - порядок на $A$, $a \in A, B \subseteq  A$.
+    \begin{enumerate}
+        \item a - \underline{минимальный} $\overset{\text{def}}{\Leftrightarrow} \forall x \in A
+        (<x,a> \in \rho \Rightarrow x=a)$
+        \item a - \underline{максимальный} $\overset{\text{def}}{\Leftrightarrow} \forall x \in A
+        (<a,x> \in \rho \Rightarrow x=a)$
+        \item a - \underline{наименьший} $\overset{\text{def}}{\Leftrightarrow} \forall x \in A
+        (a \not = x \Rightarrow <a,x> \in \rho)$
+        \item a - \underline{наибольший} $\overset{\text{def}}{\Leftrightarrow} \forall x \in A
+        (a \not = x \Rightarrow <x,a> \in \rho)$
+        \item a - \underline{нижняя грань} множества B, если $\forall x \in B
+        (<a,x> \in \rho \text{ или } a=x)$
+        \item a - \underline{верхняя грань} множества B, если $\forall  x \in B 
+        (<x,a> \in \rho \text{ или } x=a)$
+        \item Наибольшая/наименьшая из всех нижних/верхних граней( если она $\exists$ ) \\
+        называется
+        \underline{нижней/верхней границей} множества $B$.
+    \end{enumerate}
+    \underline{Пример:} $A = N \textbackslash \{1\}$
+    \[<x,y> \in \rho \Leftrightarrow x | y, \text{ т.е. } x - \text{ делитель }y.\]
+    $B=\{4,7,12\}$
+    \begin{itemize}
+        \item $\forall x \in A ( x| 2 \Rightarrow x=2)$ минимальные $2,3,5,7,\dots$ - простые
+        \item $\forall x \in A ( x| 3 \Rightarrow x=3)$ максимальные \textemdash 
+        \item $a$ - максимальное $\Leftrightarrow \forall x \in A (a|x \Rightarrow x=a)$
+        \item $a$ - наименьшее $\Leftrightarrow \forall x \in A (a \not = x \Rightarrow a|x)$ 
+        наименьшее \textemdash , наибольшее \textemdash
+        \item $a$ - нижняя грань $B \Leftrightarrow \forall x \in B (a|x \text{ или } x=a)$
+        \item $a$ - верхняя грань $B: 84,168,252,\dots \vdots 84$
+    \end{itemize}
+    \subsection{Отображения}
+    \underline{Определение: } Бинарное отношение $\varphi \subseteq A x B$ называется отображением из $A$ в $B$,
+    если 
+    \begin{enumerate}
+        \item $\forall x \in A \exists y \in B: <x,y> \in \varphi$
+        \item $\forall x \in A \forall y_1,y_2 \in B 
+        (<x,y_1> \in \varphi \text{ и } <x,y_2> \in \varphi \Rightarrow y_1 = y_2)$
+    \end{enumerate}
+    \underline{Обозначение: } $<x,y> \in \varphi$ заменим на $\varphi(x) = y$
+    \pagebreak
+    
+    \underline{Определение: } Пусть: $A \rightarrow B$
+    \begin{enumerate}
+        \item $\varphi$ инъективно $\Leftrightarrow \forall x_1,x_2 \in A (x_1 \not = x_2 
+        \Rightarrow \varphi(x_1) \not = \varphi(x_2) )$
+        \item  $\varphi$ сюръективно $\Leftrightarrow \forall y \in B \exists x \in A : \varphi(x) = y$
+        \item $\varphi$ биективно $\Leftrightarrow \varphi$ инъективно и сюръективно
+        \item Если $\varphi^{-1}$(бинарное отношение, обратное к $\varphi$) является тоже отображением на $BxA$,
+        то $\varphi^{-1}$ называется \underline{обратным к $\varphi$ отображением}.
+    \end{enumerate}
+    \underline{Пример:}
+    \begin{enumerate}
+        \item $A \overset{\varphi}{\Rightarrow} B$\\
+        \begin{minipage}{0.2\textwidth}
+          \includegraphics[scale=0.4]{5.1.png}
+        \end{minipage}
+        \hspace{1em}
+        \begin{minipage}{0.8\textwidth}
+          $\varphi = \{<1,a>,<2,a>,<3,b>,<4,c>\}$\\
+          \begin{itemize}
+            \item отображение
+            \item не инъекция $\varphi(1)=\varphi(2)$, но $1 \not = 2$
+            \item сюръекция
+            \item $\varphi^{-1}=
+            \{<a,1>,<a,2>,<b,3>,<c,4>\} \Rightarrow \varphi^{-1}$ не отображение
+          \end{itemize}
+        \end{minipage}
+        \vspace{1em}
+        \par
+        \item $A \Rightarrow B$\\
+        
+        \begin{minipage}{0.2\textwidth}
+          \includegraphics[scale=0.35]{5.2.png}
+        \end{minipage}
+        \hspace{1em}
+        \begin{minipage}{0.8\textwidth}
+          \begin{itemize}
+            \item отображение
+            \item инъективно
+            \item сюръективно
+            \item биективно
+            \item $\varphi^{-1} = {<a,4>,<b,2>,<c,1>,<d,3>} \Rightarrow \varphi^{-1} - $не отображение
+          \end{itemize}
+        \end{minipage}
+        \vspace{1em}
+        \par
+    \end{enumerate}
+    \subsubsection*{Теорема 2(критерий обратности)}\label{th:2}
+    \par\noindent
+    Пусть $\varphi: A \Rightarrow B$
+    \begin{center} 
+        $\varphi$ имеет обратное $\Leftrightarrow \varphi$ биективно %клянусь, я не понял че это значит, есть скрины лекций готов показать
+    \end{center}
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        \begin{enumerate}
+            \item[\circled{$\Rightarrow$}] 
+            \begin{enumerate}
+                \item[1)] Пусть $x_1,x_2 \in A \text{ и } x_1 \not = x_2$\\
+                $\begin{matrix}
+                    <x_1, \varphi(x_1)> \in \varphi\\
+                    <x_2, \varphi(x_2)> \in \varphi\\
+                \end{matrix} \Big\} \Rightarrow
+                \begin{matrix}
+                    <\varphi(x_1),x_1> \in \varphi^{-1}\\
+                    <\varphi(x_2),x_2> \in \varphi^{-1}\\
+                \end{matrix} \Big\} \Rightarrow
+                \varphi(x_1)\not = \varphi(x_2) \Rightarrow
+                \varphi$ инъективно\\
+                \item[2)] $y \in B.$ Тогда $\exists x \in A:
+                <y,x> \in \varphi^{-1}$ (п.1 опр. отобр.). \\
+                Следовательно $\exists x \in A: <x,y> \in \varphi,$ т.е. $\varphi(x)=y \Rightarrow \varphi - $ сюръективно 
+            \end{enumerate}
+            \item[\circled{$\Leftarrow$}]
+            \begin{enumerate}
+                \item[1)] $\varphi$ сюръективно $\Rightarrow \forall y \in B \exists x \in A:
+                <x,y>\in \varphi \Rightarrow \forall y \in B, \exists x \in A:
+                <y,x>\in \varphi^{-1}$
+                \item[2)] $\varphi$ инъективно $\Rightarrow \forall x_1,x_2 \in A \text{ и }
+                \forall y \in B (<x_1,y> \in \varphi \text{ и } <x_2,y> \in \varphi) \Rightarrow\\
+                 (x_1=x_2)\Rightarrow \forall y \in B \text{ и } \forall x_1,x_2 \in A
+                 (<y,x_1>\in \varphi^{-1} \text{ и } <y,x_2> \in \varphi^{-1} \Rightarrow x_1=x_2)$
+            \end{enumerate}
+        \end{enumerate}
+        \[1),2) \Rightarrow \varphi^{-1} - \text{ отображение } \Rightarrow \varphi \text{ обратимо.}\]
+    \end{adjustwidth}
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+
+    \underline{Определение: } Пусть $\varphi: A \Rightarrow B, \Psi B \Rightarrow C$
+    \begin{center}
+        Бинарное отношение
+        \[\varphi \Psi \overset{\text{def}}{=} \{<x,z> \in AxC: \exists y \in B: \varphi(x)=y
+        \text{ и } \Psi(y)=Z\}\]
+        само является отображением и называется композицией $\varphi$ и $\Psi$ %卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐卐(свастика правостороняя, а я будист)
+                                                                               %интересно, хоть кто-то читает лекции из файла?   
+    \end{center}
+    
+    \underline{Пример:} $A \overset{\varphi}{\rightarrow} B \overset{\Psi}{\rightarrow} C$\\
+    \begin{center}
+        \begin{minipage}{0.08\textwidth}
+            \includegraphics[scale=0.4]{5.3.png}
+          \end{minipage}
+          \hspace{1em}
+          \begin{minipage}{0.8\textwidth}
+            \[\varphi \Psi =
+            \{<1,\star>,<2,\star>,<3,\triangle>,<4,\triangle>,<5,\triangle>\}\]
+          \end{minipage}
+          \vspace{1em}
+          \par
+          
+    \end{center}
+    \begin{minipage}{0.05\textwidth}
+        \[A \rightarrow C\]
+        \end{minipage}
+        \hspace{1em}
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[scale=0.4]{5.4.png}
+    \end{minipage}
+    \vspace{1em}
+    \par
+    \pagebreak
+    \subsubsection*{Теорема 3}\label{th:3}
+    \par\noindent
+    Если $\varphi$ и $\Psi$ инъективны/сюръективны/биективны, то $\varphi \Psi$ инъективно/сюръективно/биективно.\\
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        \begin{enumerate}
+            \item Пусть $\varphi: A \rightarrow B$ и $\Psi: B \rightarrow C$ инъективно.\\
+            Тогда $\Psi(\varphi(a_1))=\Psi(\varphi(a_2))\overset{\Psi \text{ин.}}{\Rightarrow} a_1=a_2.$
+            Т.е. $\varphi \Psi$ - инъективно.
+            
+            \item Пусть $\varphi: A \rightarrow B$ и $\Psi: B \rightarrow C$ сюръективны, $c \in C.$\\
+            Т.к. $\Psi$ - сюръективно $\Rightarrow \exists b \in B: \Psi(b)=C.$ \\
+            Т.к. $\varphi$ - сюръективно $\Rightarrow \exists a \in A:\varphi(a)=b$.\\
+            Следовательно $\intercal c \in C \exists a \in A:\Psi(\varphi(a))=\Psi(b)=C,$т.е. $\varphi \Psi$ сюръективно.
+        
+            \item Т.к. $\varphi \Psi$ сюръективно и инъективно $\overset{\text{опр.}}{\Rightarrow}$ биективно.
+        \end{enumerate}
     \end{adjustwidth}
     \begin{center}
         \textbf{Ч.т.д.}

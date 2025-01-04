@@ -353,6 +353,14 @@
 			"\\overline{A}"
 		],
 		"description": "stuff for mat"
+	},
+	"def": {
+		"scope": "tex,latex",
+		"prefix": "def",
+		"body": [
+			"\\overset{\\text{def}}{\\Leftrightarrow}"
+		],
+		"description": "stuff for mat"
 	}
 
 
