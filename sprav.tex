@@ -16,6 +16,7 @@
 \usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{esint}
+\usepackage{stmaryrd} 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
     \node[shape=circle, draw, inner sep=1pt, 
         minimum height=12pt] (char) {#1};}}
@@ -26,6 +27,13 @@
 \renewcommand{\includegraphics}[2][]{\ORIincludegraphics[scale=0.65,#1]{#2}}
 \newcommand{\verteq}{\rotatebox{90}{$\,=$}}
 \newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
 
 \graphicspath{{./images/}}
 \setmainlanguage{russian}
@@ -407,4 +415,246 @@
     \begin{center}
         \textbf{Ч.т.д.}
     \end{center}
+
+    \subsection{Алгебраические операции}
+    \underline{Определение: } Отображение o: $A^n \rightarrow A$ называется n-местной операцией на $A (n \in \omega)$
+    \[\omega = N \cup \{o\}\]
+    \underline{Пример:}
+    \begin{enumerate}
+        \item 
+        $\begin{matrix}
+         "+": & Z^2 \rightarrow Z \\
+         & <-1,5> \rightarrow 4\\
+         & <0,7> \rightarrow 7\\
+         & \dots \dots \dots
+        \end{matrix}$
+        \item $\neg: A \rightarrow A,$ множество всех высказываний
+        \item $x: V_2^2 \rightarrow V_2$\\
+              $<\overset{\rightarrow}{a} \overset{\rightarrow}{b}> \rightarrow \overset{\rightarrow}{c}$,
+              где $\overset{\rightarrow}{c}=\overset{\rightarrow}{a}x\overset{\rightarrow}{b}$
+        \item $\star: \equalto{N^o}{\{\varnothing\}} \rightarrow N$\hspace{20pt} $\star(\varnothing)=5$
+        \item $: : N^2 \rightarrow N$ - не операция %это че за прикол : : :-|
+        \hspace{20pt} $<5,2> \rightarrow ?$
+        \item $div : N^2 \rightarrow N$ \hspace{20pt} $<5,2> \rightarrow 2$
+    \end{enumerate}
+    \pagebreak
+    
+    \subsubsection*{Свойства операций: }
+    \par\noindent
+    Пусть o - двухместная операция на $A$
+    \begin{enumerate}
+        \item o - коммутативная $\overset{\text{def}}{\Leftrightarrow} \forall x,y \in A (x o y = y o x)$ %я с ума сойду, матан писать проще чем матлогику
+        \item o - ассоциативная $\overset{\text{def}}{\Leftrightarrow} \forall x,y,z \in A (x o(y o z)=(xoy)oz)$
+        \item l - идемпотент относительно o $\overset{\text{def}}{\Leftrightarrow} e o e = e$ %eeeeeoeeeeeeee
+        \item  o идемпотентная $\overset{\text{def}}{\Leftrightarrow} \forall x \in A (xox=x)$%хохохо дедушка мороз
+        \item e - нейтральный относительно o $\overset{\text{def}}{\Leftrightarrow} \forall x \in A (xoe=eox=x)$
+        \item o обратима слева/справа $\overset{\text{def}}{\Leftrightarrow} \forall x \in A \exists y \in A: yox=e/xoy=e$
+        \item e называется нулевым относительно o $\overset{\text{def}}{\Leftrightarrow} \forall x \in A (xoe=eox=e)$
+        \item о сократим слева/справа $\overset{\text{def}}{\Leftrightarrow} \forall x,y,z \in A 
+        (xoy=xoz/yox=zox \Rightarrow y=z)$ 
+    \end{enumerate}
+    Пусть * - двухместная операция на $A$
+    \begin{enumerate}
+        \item[9.] * дистрибутивна слева/справа относительно o $\overset{\text{def}}{\Leftrightarrow} 
+        \forall x,y,z \in A$ \[(x*(yoz)=(x*y)o(x*z))(yoz)*X=(y*x)o(z*x)\]
+    \end{enumerate}
+    \underline{Определение: } Пусть o - n-местная операция на $A,B \subseteq A.$ 
+    \begin{center}
+        Множество B называется замкнутым относительно o, если $\forall x,y \in B (xoy \in B)$        
+    \end{center}
+
+    \subsection{Мощность множеств.}
+    \underline{Определение: } Множества $A$ и $B$ называются равномощными если существует\\ биективное
+    отображение $\varphi: A \rightarrow B$\\
+    \underline{Обозначение:} $|A|=|B|$\\
+    \underline{Примеры:}
+    \begin{enumerate}
+        \item $|N|=|Z|$
+        \item $|N|=|Q|$
+        \item $|Z|=|Q|$
+    \end{enumerate}
+    \pagebreak
+    \subsubsection*{Теорема 4(Кантора - Бернштейна)}\label{th:4}%кто?
+    \par\noindent
+    $|A|=|B| \Leftrightarrow$ существуют инъективные отображения 
+    $\varphi: A \rightarrow B \text{ и } f:B \rightarrow A$\\
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        \begin{enumerate}
+            \item[\circled{$\Rightarrow$}]
+            $|A|=|B|\overset{\text{по опр.}}{\Rightarrow} \exists \varphi: A \rightarrow B$ - биекция
+            \begin{itemize}
+                \item[] \hspace{60pt} $\varphi - $ инъективное отображение
+                \item[] \hspace{60pt} $\varphi^{-1}$ - биекция
+                \item[] \hspace{60pt} $\varphi^{-1}: B \rightarrow A$ - инъекция 
+            \end{itemize}
+            \item[\circled{$\Leftarrow$}]
+            Пусть $\varphi: A \rightarrow B \text{ и } f: B \rightarrow A$ - инъективное отображение.\\
+            \par
+            \begin{minipage}{0.3\textwidth}
+              \includegraphics[scale=0.4]{7.1.png}
+            \end{minipage}
+            \hspace{1em}
+            \begin{minipage}{0.55\textwidth}
+              Пусть $a \in A$. Построим цепь с концом следующим образом:
+              \begin{itemize}
+                \item если у f нет праобразов по f, то будем говорить, что цепу с концом a имеет вид a и длину 1,
+                \item в противном случае $\exists (!) b=b: f(b) = a$
+                \item если у b нет праобразов по $\varphi$, то будем говорить, что цепу с концом a имеет вид $a \mapsfrom b$
+                и длину 2,
+                \item в противном случае $\exists (!) a' \in A: \varphi(a')=b$,
+                \item если у a' \dots 
+              \end{itemize}
+            \end{minipage}
+            \vspace{1em}
+            \par
+            Этот процесс либо остановится, и мы скажем, что цепу с концом a имеет длину $n \in N,$ либо нет,
+            и мы скажем, что цепь с концом a имеет длину $\infty$.
+            Таким образом мы построим цепи для всех элементов множества A и аналогичным образом для B. 
+            \par
+            \underline{Введем обозначения}:
+            \begin{itemize}
+                \item $A_o \subseteq A$ - множество элементов из A, которые являются концами цепей с чётной длиной.
+                \item $A_1 \subseteq A$ - тоже самое, но с нечетной длинной
+                \item $A_\infty \subseteq A$ - тоже самое, но с длиной $\infty$
+            \end{itemize}
+            Аналогично $B_0,B_1,B_\infty \subseteq B$.\\
+            Заметим, что $A_0 \cup A_1 \cup A_\infty = A,B_0 \cup B_1 \cup B_\infty = B$
+            \[\forall i,j \in \{0,1,\infty\} (i \not = j \Rightarrow A_1 \cap A_j = \varnothing \text{ и } B_i \cap B_j = \varnothing)\]
+            \begin{minipage}{0.35\textwidth} 
+              \includegraphics[scale=0.5]{7.2.png}
+            \end{minipage}
+            \hspace{1em}
+            \begin{minipage}{0.55\textwidth}
+              \[f: B_1 \rightarrow A_0 \text{ сюръективно, т.к. }\forall a \in A_0 \exists b \in B_1 : f(b) = a\]
+              \[\varphi: A_1 \rightarrow B_0 \text{ сюръективно}\]
+            \end{minipage}
+            \vspace{1em}
+            \par
+            \begin{center}
+                Тогда $h: A\rightarrow B$ такое, что $\forall x \in A$:
+                \[h(x)=
+                \begin{cases}
+                    \varphi(x), \text{ если } x \in A_1 \cup A_\infty\\
+                    f^{-1}(x), \text{ если } x \in A_0,
+                \end{cases}\]
+                является биекцией из $A$ в $B$. По определению $|A|=|B|$.
+            \end{center}
+        \end{enumerate}
+    \end{adjustwidth}    
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+    \underline{Случай 1:} Существует инъективное отображения $A \rightarrow B$ и $B \rightarrow A \Rightarrow |A|=|B|$\\
+    \underline{Случай 2:} Существует инъективное отображение $A \rightarrow B$ и \\
+    $\not \exists$ инъективное отображение $B \rightarrow A \overset{\text{def}}{\Leftrightarrow}|A| < |B|$
+    (мощность A меньше мощности B)\\
+    \underline{Случай 3:} Существует инъективное отображение $B \rightarrow A $ и \\
+    $\not \exists$ инъективное отображение $A \rightarrow B \overset{\text{def}}{\Leftrightarrow} |A|>|B|$
+    (см. случай 2)\\
+    \underline{Случай 4:} Не существует инъективное отображение $A \rightarrow B$ и $B \rightarrow A$ - невозможный
+    случай\\
+    \par
+    \textbf{Утверждение:}
+    Пусть K - класс множеств (т.е. множество некоторых (не всех) множеств). 
+    \begin{center}
+        Отношение равномощности является эквивалентностью на K
+    \end{center}
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        \begin{enumerate}
+            \item рефлексивность: $|X|=|X|,$ т.к. $f: x\rightarrow x,$ где $f(x)=x$- биекция
+            \item симметричность: $|X|=|Y| \Rightarrow \exists$ биекция $f:X \rightarrow Y = \exists$ биекция
+            \[f^{-1}: Y \rightarrow X \Rightarrow |Y|=|X|\]
+            \item транзитивность: \\
+            \[\begin{matrix}
+                |X|=|Y|\\
+                |Y|=|Z|
+            \end{matrix} \Big\} \Rightarrow
+            \begin{matrix}
+                \exists \text{ биекция } f: X \rightarrow Y\\
+                \exists \text{ биекция } \varphi: Y \rightarrow Z 
+            \end{matrix} \Big\} f\varphi: X\rightarrow Z \text{ - биекция }\Rightarrow |X|=|Z|\]
+        \end{enumerate}
+    \end{adjustwidth}
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+    \begin{minipage}{0.3\textwidth}
+      \includegraphics[scale=0.3]{7.3.png}
+    \end{minipage}
+    \hspace{1em}
+    \begin{minipage}{0.55\textwidth}
+        \underline{Определение: } Класс эквивалентности множества X по отношению равномощности называется мощностью множества X.\\
+        \underline{Обозначение: } $|X|$
+    \end{minipage}
+    \vspace{1em}
+    \par
+
+    \textbf{Утверждение:}
+    Пусть k-класс множеств. Отношение < (см. случай 2 и 3) являются отношением строго порядка на k.
+    
+    \pagebreak
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        \begin{enumerate}
+            \item антисимметричность $\checkmark$
+            \item транзитивность $\checkmark$
+            \item антирефлексивно $\checkmark$
+        \end{enumerate}
+    \end{adjustwidth}
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+
+    \subsubsection*{Теорема 5 (Кантора)}\label{th:5}
+    \par\noindent
+    \[|A|<|P(A)|\]
+    \underline{Обозначение: } P(A) - булеан A(множество всех подмножеств А)
+    
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        \begin{enumerate}
+            \item[\circled{1}] $A = \varnothing$\\
+            Пусть $f:A \rightarrow P(A)$, т.е. $f=\varnothing$ - инъективное отображение.
+            \[f \text{ инъективно } \Leftrightarrow \forall x,y \in A (x \not = y \Rightarrow f(x) \not = f(y))\]
+            \[P(A) = \{\varnothing\}\]
+            $\Cap \hspace{10pt} \exists$ отображение $f:P(A) \rightarrow A$. По определению $\exists < \varnothing,
+            x> \varepsilon f$ для некоторого $x \in A.$\\
+            Следовательно, не $\exists$ отображения из $P(A)$ в $A$. Т.е. $|A|<|P(A)|$
+
+            \item[\circled{2}] $A \not = \varnothing$
+            \begin{enumerate}
+                \item[1)] $f: A \rightarrow P(A)$, где $f(a)=\{a\},$ является инъективным:
+                \[a \not = b \Rightarrow \{a\} \not = \{b\}\]
+                \item[2)] $\Cap \exists$ инъективное отображение из $P(A)$ в $A$. По \hyperref[th:4]{Th. К-Б} $|A|=|P(A)|$\\
+                По определению существует биективное отображение $\varphi: A \rightarrow P(A)$. \\
+                Пусть $\mu = \{x \in A | \not \in \varphi(x)\}$.
+                \begin{itemize}
+                    \item $\mu \not = \varnothing$
+                    \item[$\triangleleft$] $\varphi$ - биекция $\Rightarrow \exists x \in A: \varphi(x) = \varnothing \Rightarrow
+                    x \not \in \varphi(x),$ т.е. $x \in M \triangleright$
+                    \item $\exists m \in A: \varphi(m)=M,$ т.к. $M \in P(a)$ и $\varphi - $ биекция
+                \end{itemize} 
+            \end{enumerate}
+        \end{enumerate}
+        \begin{center}
+            \includegraphics[scale=0.4]{7.4.png}
+        \end{center}
+        Т.е. не $\exists$ инъективного отображения из $P(A)$ в $A \Rightarrow |A|<|P(A)|$
+    \end{adjustwidth}
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+
+    \pagebreak
+    \underline{Определение: } Множество называется \underline{бесконечным}, если оно равномощно некоторому своему
+    собственному ($\not =$ ему) подмножеству. В противном случае оно называется конечным.\\
+    \underline{Примеры:}
+    \begin{enumerate}
+        \item $N$ - бесконечно, т.к. $|N|=|N\backslash \{1\}|$ 
+        \begin{center}
+            \includegraphics[scale=0.4]{7.5.png} 
+        \end{center}
+    \end{enumerate}
 \end{document}
