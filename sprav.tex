@@ -1,3 +1,4 @@
+% !TeX program = xelatex
 \documentclass[12pt]{article}
 \usepackage[a4paper, total={7in,10in}]{geometry}
 
@@ -656,5 +657,141 @@
         \begin{center}
             \includegraphics[scale=0.4]{7.5.png} 
         \end{center}
+        \item  
+        \begin{minipage}{0.45\textwidth}
+          \includegraphics[scale=0.6]{7.6.png}
+        \end{minipage}
+        \hspace{1em}
+        \begin{minipage}{0.55\textwidth}
+          $A$ - конечно.
+        \end{minipage}
+        \vspace{1em}
+        \par
     \end{enumerate}
+    \underline{Определение: } Множество, равномощное множеству натуральных чисел, называется счетным.\\
+    \underline{Обозначение:} $|A|=\omega$
+    \subsubsection*{Теорема 6}\label{th:6}
+    \begin{enumerate}
+        \item Если $A$ бесконечно, $A \subseteq B \Rightarrow B$ бесконечно.
+        \item Если $A$ конечно, $B \subseteq A \Rightarrow B$ конечно.
+        \item Пусть $\overline{n}=\{0,1,2,\dots,n-1\}$ - отрезок натурального ряда, $n \in \omega$. Множество
+        $\overline{n}$ конечно $\forall n \in \omega$
+        \item Множество A конечно $\Leftrightarrow \exists n \in \omega: |A|=|\overline{n}|$\\
+            \underline{Определение: } $n$(см. п. 4) называется количеством элементов множества $A$.\\
+            Пример: 
+            $\begin{matrix}
+                A = \{a,b,c\}\\
+                \overline{3}=\{0,1,2\}    
+            \end{matrix} \Big\} \Rightarrow |A|=|\overline{3}|$
+        \item Счетное множество бесконечно
+        \item Любое бесконечное множество содержит счетное подмножество.
+        \item Если A бесконечно, B счетно или конечно $\Rightarrow |A| = |A \cup B|$
+        \item Если A бесконечно, $|A|> \omega, B$ счетно или конечно $\Rightarrow |A|=|A\backslash B|$
+        \item Любое подмножество счетного множества не более чем счетно.
+        \item Если $\forall i \in \overline{n} (|A_i|< \omega) \Rightarrow |\underset{i \in \overline{n}}{\bigcup} A_i| < \omega$
+        \item Если $\forall i \in \omega (|A_i|< \omega) \Rightarrow |\underset{i \in \omega}{\bigcup} A_i| \leq \omega$
+        \item $\forall i \in \omega (|A_i|=\omega) \Rightarrow |\underset{i \in \omega}{\bigcup}A_i|= \omega$
+    \end{enumerate}
+
+    \subsubsection*{Теорема }\label{th:}
+    \[|R|> \omega\]
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        Отображение $\varphi: \omega \rightarrow R$ такое, что $\varphi(x)=x \forall x \in \omega,$ является инъекцией.
+        Поэтому $|R|\geq \omega$.\\
+        Покажем что [0;1]$\not = \omega$.\\
+        $\Cap |[0;1]|=\omega \Rightarrow \exists$ биекция $f:w \rightarrow [0;1]$ которую будем называть нумерацией.
+    \end{adjustwidth}
+    $\begin{matrix}
+        f(0)=0,g_{00},g_{01},g_{02},\dots\\
+        f(1)=0,g_{10},g_{11},g_{12},\dots\\
+        f(2)=0,g_{20},g_{21},g_{22},\dots\\
+    \end{matrix}$\\
+    Какой номер у числа $0,g_{00},g_{11},g_{22}$, $g_{ij} \not = g_{ij} \forall i \in \omega$?\\
+    Оно номер не имеет, поэтому f не является биекцией $\Cap$\\
+    Покажем что |R| $\not = \omega$\\
+    $\begin{matrix}
+        \Cap |R| = \omega\\
+        [0;1] \subseteq R 
+    \end{matrix} \Bigg\} \Rightarrow |[0;1]| = \omega \Cap$
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+    \underline{Определение: } Мощность множества R называется мощностью континиума.\\
+    \underline{Обозначение: } Если А имеет мозность континиума, то будем писать |A| = C.\\
+    \underline{Континиум-гипотеза: }\\
+    \begin{center}
+        Не существует такого множества А, что \\
+        $\omega < |A| < C$
+    \end{center}
+    \underline{Обобщенная континиум-гипотеза: }
+    \begin{center}
+        Не существует такого множества А, что \\
+        $|B| < |A|<|P(B)|$\\
+        для некоторого бесконечного множества B.
+    \end{center}
+    \underline{Парадокс Рассела:}
+    \[X=\{Y|Y \in Y\}\]
+    \[X\in X ?\]
+    
+    \pagebreak
+
+    \underline{Доказательство (Теорема 6):}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        $\circled{1}$ A бесконечно, A $\subseteq B \Rightarrow B$ бесконечно
+    \end{adjustwidth}
+
+    \underline{Доказательство:}
+    \begin{adjustwidth}{1.5em}{1.5em}
+        A=B - очевидно\\
+        A $\subset B $ A бесконечно $\Rightarrow \exists C \subset A:|A|=|C|,$ т.е. $\exists$ биекция $\varphi: A \rightarrow C$\\
+        Пусть $f:B\rightarrow B$ такое, что\\
+        f(x)=\Bigg\{$\begin{matrix}
+            \varphi(x), \text{если } X \in A\\
+            x, \text{если } X \in B \backslash A
+        \end{matrix}$\\
+        Тогда $f:B \rightarrow (B \backslash A) \lor C$ - биекция, причём $\exists x \in A \backslash C: x \not \in f(B),
+        (B\backslash A) \lor C \subset B \Rightarrow B$ бесконечно
+    \end{adjustwidth}
+    \begin{center}
+        \textbf{Ч.т.д.}
+    \end{center}
+    \section{Алгебра высказываний}
+    \subsection{Основные понятия}
+    \underline{Определение: } Высказывание - это повествовательное предложение, про которое однозначно можно сказать
+    , истинно оно или ложно.\\
+    \underline{Замечание:} При рассмотретрении высказываний мы не будем выделять объект про который идет
+    речь и упомянутые свойства этого объекта.
+    Поэтому на каждое высказываение можно смотреть как на величину, которая принимает одно из двух значений:
+    истина или ложно.\\
+    \underline{Обозначение: } $\begin{matrix}
+        A,B,C,A_1,A_2,\dots\\
+        A=\text{И - "A истинно"}\\
+        A=\text{Л - "A ложно"}
+    \end{matrix}$
+    \underline{Определение: Логические операции:}
+    \begin{enumerate}
+        \item Конъюкция(= логическое "и")\\
+        Обозначение: $A \land B (AB,A \& B)$\\
+        $A \land B = \text{И} \Leftrightarrow \Bigg\{ \begin{matrix}
+            A=\text{И}\\
+            B=\text{И}
+        \end{matrix}$
+        \item Дизъюнкция (= логическое "или")
+        Обозначение: $A \lor B (A+B)$\\
+        $A \lor B = \text{И} \Leftrightarrow \Bigg[ \begin{matrix}
+            A=\text{И}\\
+            B=\text{И}
+        \end{matrix}$
+        \item Отрицание (=инверсий, логическое не)\\
+        Обозначение: $\lnot A (\overline{A},!A)$\\
+        $\lnot A = $ И $\Leftrightarrow A=$ Л
+        \item Импликация(= логическое следование, "если ... то ...")\\
+        Обозначение: $A \rightarrow B (A\subset B)$\\
+        $A \rightarrow B=$Л $\Leftrightarrow \Bigg\{ \begin{matrix}
+            A=\text{И}\\
+            B=\text{Л}\\
+        \end{matrix}$
+    \end{enumerate} 
+    \subsection{Формулы алгебры высказываний}
 \end{document}
